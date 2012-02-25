@@ -4,8 +4,8 @@
 
 int main()
 {
-    List * ab = new arrayList();
+    List * ab = new ArrayList();
     ab->isIn(7);
-    ab->lentgh();
+    ab->length();
     return 0;
 }

@@ -8,7 +8,7 @@ public:
     virtual void add(int val) = 0;
     virtual void remove(int val) = 0;
     virtual bool isIn(int val) = 0;
-    virtual int lentgh() = 0;
+    virtual int length() = 0;
 };
 
 #endif // LIST_H

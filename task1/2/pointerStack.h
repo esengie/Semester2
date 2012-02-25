@@ -1,18 +1,18 @@
-#ifndef pointerStack_H
-#define pointerStack_H
+#ifndef PointerStack_H
+#define PointerStack_H
 
-#include "Stack.h"
+#include "stack.h"
 
-class pointerStack : public Stack
+class PointerStack : public Stack
 {
 public:
-    pointerStack(): next(0), value(0){ }
+    PointerStack();
     void push(int val);
     int pop();
-    ~pointerStack() {delete next;}
+    ~PointerStack();
 private:
-    pointerStack* next;
+    PointerStack* next;
     int  value;
 };
 
-#endif // pointerStack_H
+#endif // PointerStack_H

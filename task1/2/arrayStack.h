@@ -1,20 +1,20 @@
-#ifndef arrayStack_H
-#define arrayStack_H
+#ifndef ArrayStack_H
+#define ArrayStack_H
 
-#include "Stack.h"
+#include "stack.h"
 
-const int size = 1000;
 
-class arrayStack : public Stack
+class ArrayStack : public Stack
 {
 public:
-    arrayStack(): length(0){}
+    ArrayStack();
     void push(int val);
     int pop();
 private:
+    static const int size = 1000;
     int length;
     int buff[size];
 };
 
 
-#endif // arrayStack_H
+#endif // ArrayStack_H

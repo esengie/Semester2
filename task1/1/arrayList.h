@@ -1,22 +1,24 @@
-#ifndef ARRAYLIST_H
-#define ARRAYLIST_H
+#ifndef ArrayList_H
+#define ArrayList_H
 
-#include "List.h"
+#include "list.h"
 
-const int size = 1000;
 
-class arrayList : public List
+
+class ArrayList : public List
 {
 public:
-    arrayList(): length(0){}
+    ArrayList();
     void add(int val);
     void remove(int val);
     bool isIn(int val);
-    int lentgh();
+    int length();
 private:
-    int length;
+    static const int size = 1000;
+    int lengthi;
     int buff[size];
+
 };
 
 
-#endif // ARRAYLIST_H
+#endif // ArrayList_H

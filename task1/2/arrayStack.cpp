@@ -1,6 +1,11 @@
 #include "arrayStack.h"
 
-void arrayStack::push(int val)
+ArrayStack::ArrayStack()
+{
+    length = 0;
+}
+
+void ArrayStack::push(int val)
 {
     if (length < size)
     {
@@ -10,7 +15,7 @@ void arrayStack::push(int val)
     return;
 }
 
-int arrayStack::pop()
+int ArrayStack::pop()
 {
     return buff[length--];
 }

@@ -1,17 +1,28 @@
 #include "pointerStack.h"
 
-void pointerStack::push(int val)
+
+PointerStack::PointerStack()
 {
-    pointerStack* temp = new pointerStack;
+    next = 0;
+    value = 0;
+}
+
+PointerStack::~PointerStack()
+{
+    delete next;
+}
+
+void PointerStack::push(int val)
+{
+    PointerStack* temp = new PointerStack;
     temp->value = val;
     temp->next = next;
     next = temp;
-    return;
 }
 
-int pointerStack::pop()
+int PointerStack::pop()
 {
-    pointerStack* temp = next;
+    PointerStack* temp = next;
     int ollie = 0;
     if (temp->next)
     {

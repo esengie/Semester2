@@ -21,5 +21,5 @@ SOURCES += main.cpp \
 
 HEADERS += \
     arrayStack.h \
-    Stack.h \
-    pointerStack.h
+    pointerStack.h \
+    stack.h

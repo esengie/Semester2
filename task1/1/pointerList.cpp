@@ -1,8 +1,19 @@
 #include "pointerList.h"
 
-void pointerList::add(int val)
+PointerList::PointerList()
 {
-    pointerList* temp = new pointerList;
+    next = 0;
+    value = 0;
+}
+
+PointerList::~PointerList()
+{
+    delete next;
+}
+
+void PointerList::add(int val)
+{
+    PointerList* temp = new PointerList;
     temp->value = val;
     if (!next)
         next = temp;
@@ -11,27 +22,25 @@ void pointerList::add(int val)
         temp->next = next;
         next = temp;
     }
-    return;
 }
 
-void pointerList::remove(int val)
+void PointerList::remove(int val)
 {
-    pointerList* temp = this;
+    PointerList* temp = this;
     while(temp->next && temp->next->value != val)
         temp = temp->next;
     if (temp->next && temp->next->value == val)
     {
-        pointerList* tmp = temp->next;
+        PointerList* tmp = temp->next;
         temp->next = temp->next->next;
         tmp->next = 0;
-        delete tmp;
+        delete tmp; {delete next;}
     }
-    return;
 }
 
-bool pointerList::isIn(int val)
+bool PointerList::isIn(int val)
 {
-    pointerList* temp = next;
+    PointerList* temp = next;
     while (temp)
     {
         if (temp->value == val)
@@ -41,10 +50,10 @@ bool pointerList::isIn(int val)
     return false;
 }
 
-int pointerList::lentgh()
+int PointerList::length()
 {
     int length = 0;
-    pointerList* temp = next;
+    PointerList* temp = next;
     while (temp)
     {
         length++;

@@ -1,20 +1,20 @@
-#ifndef POINTERLIST_H
-#define POINTERLIST_H
+#ifndef PointerList_H
+#define PointerList_H
 
-#include "List.h"
+#include "list.h"
 
-class pointerList : public List
+class PointerList : public List
 {
 public:
-    pointerList(): next(0), value(0){ }
+    PointerList();
     void add(int val);
     void remove(int val);
     bool isIn(int val);
-    int lentgh();
-    ~pointerList() {delete next;}
+    int length();
+    ~PointerList();
 private:
-    pointerList* next;
+    PointerList* next;
     int  value;
 };
 
-#endif // POINTERLIST_H
+#endif // PointerList_H

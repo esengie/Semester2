@@ -20,6 +20,6 @@ SOURCES += main.cpp \
     arrayList.cpp
 
 HEADERS += \
-    List.h \
     pointerList.h \
-    arrayList.h
+    arrayList.h \
+    list.h

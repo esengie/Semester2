@@ -1,5 +1,10 @@
 #include "arrayList.h"
 
+ArrayList::ArrayList()
+{
+    lengthi = 0;
+}
+
 void swap(int* am, int* bm)
 {
     int im = *am;
@@ -7,43 +12,41 @@ void swap(int* am, int* bm)
     *bm = im;
 }
 
-void arrayList::add(int val)
+void ArrayList::add(int val)
 {
-    if (length < size)
+    if (length() < size)
     {
-        buff[length] = val;
-        length++;
+        buff[length()] = val;
+        lengthi++;
     }
-    return;
 }
 
-void arrayList::remove(int val)
+void ArrayList::remove(int val)
 {
     int i = 0;
-    while (i < length && val != buff[i])
+    while (i < length() && val != buff[i])
     {
         i++;
     }
-    if (i == length)
+    if (i == length())
         return;
-    while (i < length)
+    while (i < length())
     {
         swap (&buff[i], &buff[i+1]);
         i++;
     }
-    length--;
-    return;
+    lengthi--;
 }
 
-bool arrayList::isIn(int val)
+bool ArrayList::isIn(int val)
 {
-    for (int i = 0; i < length; i++)
+    for (int i = 0; i < length(); i++)
         if (buff[i] == val)
             return true;
     return false;
 }
 
-int arrayList::lentgh()
+int ArrayList::length()
 {
-    return length;
+    return lengthi;
 }
