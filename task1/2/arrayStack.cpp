@@ -2,7 +2,7 @@
 
 ArrayStack::ArrayStack()
 {
-    length = 0;
+    length = 1;
 }
 
 void ArrayStack::push(int val)
@@ -17,6 +17,7 @@ void ArrayStack::push(int val)
 
 int ArrayStack::pop()
 {
-    return buff[length--];
+    if (length)
+        return buff[--length];
 }
 

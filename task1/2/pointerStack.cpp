@@ -24,7 +24,7 @@ int PointerStack::pop()
 {
     PointerStack* temp = next;
     int ollie = 0;
-    if (temp->next)
+    if (temp)
     {
         next = next->next;
         ollie = temp->value;
