@@ -19,5 +19,6 @@ int ArrayStack::pop()
 {
     if (length)
         return buff[--length];
+    return 0;
 }
 

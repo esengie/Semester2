@@ -37,6 +37,8 @@ int calculate(int n)
         std::cin >> h;
         freopen(h.c_str(), "rw", stdin);
     }
+    std::cout << "Please enter the expression you want calculated" << std::endl;
+
     int result = 0;
     Stack* stack = new PointerStack();
 
@@ -45,7 +47,10 @@ int calculate(int n)
         int i = 0;
         bool isNum = false;
         char ch = ' ';
-        ch = std::cin.get();
+        while (ch == '\n' || ch == ' ')
+        {
+            ch = std::cin.get();
+        }
         if (isNumber(ch)) do
         {
             isNum = true;
@@ -64,7 +69,6 @@ int calculate(int n)
                 result = operate(ch, stack);
                 stack->push(result);
             }
-        ch = std::cin.get();
     }
     result = stack->pop();
     delete stack;
