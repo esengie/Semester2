@@ -25,7 +25,7 @@ int operate(char sym, Stack*& stack)
         case '/':
             return left / right;
     }
-    return 0;
+    return right;
 }
 
 int calculate(int n)
@@ -37,27 +37,32 @@ int calculate(int n)
         std::cin >> h;
         freopen(h.c_str(), "rw", stdin);
     }
-    std::cout << "Please enter the expression you want calculated" << std::endl;
+    std::cout << "Please enter the expression you want calculated and end it with" << std::endl;
 
     int result = 0;
     Stack* stack = new PointerStack();
+    char ch = ' ';
 
     while(std::cin)
     {
         int i = 0;
         bool isNum = false;
-        char ch = ' ';
+        ch = std::cin.get();
+
         while (ch == '\n' || ch == ' ')
         {
             ch = std::cin.get();
         }
-        if (isNumber(ch)) do
+        if (isNumber(ch))
         {
-            isNum = true;
-            i = i * 10 + ch - '0';
-            ch = std::cin.get();
+            do
+            {
+                isNum = true;
+                i = i * 10 + ch - '0';
+                ch = std::cin.get();
+            }
+            while (std::cin && isNumber(ch));
         }
-        while (std::cin && isNumber(ch));
         if (isNum)
         {
             stack->push(i);
