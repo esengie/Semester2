@@ -9,6 +9,7 @@
 class QuickSort : public Sort
 {
 public:
+    /// calls sortHelper
     int* sort(int*, int);
 private:
     /// actual sorter.
