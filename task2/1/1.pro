@@ -19,8 +19,7 @@ SOURCES += main.cpp \
     sort.cpp \
     bubbleSort.cpp \
     quickSort.cpp \
-    shitSort.cpp \
-    sort.cpp
+    shitSort.cpp
 
 HEADERS += \
     sort.h \
