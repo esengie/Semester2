@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2012-03-02T17:50:18
+# Project created by QtCreator 2012-02-24T23:16:09
 #
 #-------------------------------------------------
 
@@ -16,13 +16,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    sort.cpp \
-    bubbleSort.cpp \
-    quickSort.cpp \
-    shitSort.cpp
+    pointerList.cpp \
+    arrayList.cpp
 
 HEADERS += \
-    sort.h \
-    bubbleSort.h \
-    quickSort.h \
-    shitSort.h
+    pointerList.h \
+    arrayList.h \
+    list.h

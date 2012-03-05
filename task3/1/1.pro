@@ -1,18 +1,28 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2012-03-03T15:33:49
+# Project created by QtCreator 2012-03-02T17:50:18
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core
+
+QT       -= gui
 
 TARGET = 1
+CONFIG   += console
+CONFIG   -= app_bundle
+
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        slider.cpp
+SOURCES += main.cpp \
+    sort.cpp \
+    bubbleSort.cpp \
+    quickSort.cpp \
+    shitSort.cpp
 
-HEADERS  += slider.h
-
-FORMS    += slider.ui
+HEADERS += \
+    sort.h \
+    bubbleSort.h \
+    quickSort.h \
+    shitSort.h
