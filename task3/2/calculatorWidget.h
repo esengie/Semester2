@@ -2,7 +2,7 @@
 #define CALCULATOR_H
 
 #include <QWidget>
-#include <stackCalculator.h>
+
 
 namespace Ui {
     class CalculatorWidget;
@@ -15,6 +15,16 @@ class CalculatorWidget : public QWidget
 public:
     explicit CalculatorWidget(QWidget *parent = 0);
     ~CalculatorWidget();
+signals:
+    void value(QString);
+
+public slots:
+    void left(int);
+    void oper(const QString&);
+    void right(int);
+    void sender();
+
+
 
 private:
     Ui::CalculatorWidget *ui;
