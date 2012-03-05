@@ -2,9 +2,10 @@
 #define QUICKSORT_H
 #include "sort.h"
 
-/// Recursive quicksort.
+/** Recursive quicksort.
 
-/// \sa http://en.wikipedia.org/wiki/Quicksort#Simple_version
+    \sa http://en.wikipedia.org/wiki/Quicksort#Simple_version
+*/
 
 class QuickSort : public Sort
 {
@@ -12,8 +13,9 @@ public:
     /// calls sortHelper
     int* sort(int*, int);
 private:
-    /// actual sorter.
-    /** \param array takes an array
+    /** actual sorter.
+
+        \param array takes an array
         \param first takes first element of an array
         \param last takes last element of an array
     */

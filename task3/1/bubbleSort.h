@@ -2,9 +2,10 @@
 #define BUBBLESORT_H
 #include "sort.h"
 
-/// bubbbbbble ssssort.
+/** bubbbbbble ssssort.
 
-/// -nothing here-
+    -nothing here-
+*/
 
 class BubbleSort : public Sort
 {
