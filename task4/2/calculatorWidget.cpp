@@ -1,6 +1,6 @@
 #include "stackCalculator.h"
 #include "calculatorWidget.h"
-#include "ui_calculator.h"
+#include "ui_calculatorWidget.h"
 
 
 CalculatorWidget::CalculatorWidget(QWidget *parent) :
