@@ -4,11 +4,11 @@
 #include <QString>
 #include <QWidget>
 
-class Calc : public QWidget
+class StackCalculator : public QWidget
 {
     Q_OBJECT
 public:
-    Calc(): QWidget(), left_(0), oper_('+'), right_(0)
+    StackCalculator(): QWidget(), m_left(0), m_oper('+'), m_right(0)
     { }
 signals:
     void value(QString);
@@ -19,9 +19,9 @@ public slots:
 private:
     //static const int size = 0;
 
-    int left_;
-    char oper_;
-    int right_;
+    int m_left;
+    char m_oper;
+    int m_right;
 
     void calc();
     static int operate(int, char, int);

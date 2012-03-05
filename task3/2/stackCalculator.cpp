@@ -1,36 +1,36 @@
-#include "calc.h"
+#include "stackCalculator.h"
 
-void Calc::left(int a)
+void StackCalculator::left(int a)
 {
-    left_ = a;
+    m_left = a;
     calc();
 }
 
-void Calc::right(int a)
+void StackCalculator::right(int a)
 {
-    right_ = a;
+    m_right = a;
     calc();
 }
 
-void Calc::oper(const QString s)
+void StackCalculator::oper(const QString s)
 {
-    oper_ = s.toAscii().data()[0];
+    m_oper = s.toAscii().data()[0];
     calc();
 }
 
-void Calc::calc()
+void StackCalculator::calc()
 {
 
-    if (!(!right_ && oper_ != '/'))
+    if (m_right || m_oper != '/')
     {
-        int temp = operate(left_, oper_, right_);
+        int temp = operate(m_left, m_oper, m_right);
         QString text = QString::number(temp);
         emit value(text);
     }
 }
 
 
-int Calc::operate(int left, char sym, int right)
+int StackCalculator::operate(int left, char sym, int right)
 {
     switch (sym)
     {

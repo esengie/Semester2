@@ -1,12 +1,12 @@
-#include "calculator.h"
+#include "calculatorWidget.h"
 #include "ui_calculator.h"
 
 
-Calculator::Calculator(QWidget *parent) :
+CalculatorWidget::CalculatorWidget(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Calculator)
+    ui(new Ui::CalculatorWidget)
 {
-    Calc* kt = new Calc();
+    StackCalculator* kt = new StackCalculator();
     ui->setupUi(this);
     ui->comboBox->addItem("+");
     ui->comboBox->addItem("*");
@@ -16,13 +16,13 @@ Calculator::Calculator(QWidget *parent) :
             kt,SLOT(left(int)));
     connect(ui->spinBox_2, SIGNAL(valueChanged(int)),
             kt,SLOT(right(int)));
-    connect(ui->comboBox, SIGNAL(editTextChanged(QString)),
+    connect(ui->comboBox, SIGNAL(currentIndexChanged(const QString &)),
             kt,SLOT(oper(QString)));
     connect(kt, SIGNAL(value(QString)),
             ui->lineEdit, SLOT(setText(QString)));
 }
 
-Calculator::~Calculator()
+CalculatorWidget::~CalculatorWidget()
 {
     delete ui;
 }

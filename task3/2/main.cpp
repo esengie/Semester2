@@ -1,10 +1,10 @@
 #include <QtGui/QApplication>
-#include "calculator.h"
+#include "calculatorWidget.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Calculator w;
+    CalculatorWidget w;
     w.show();
 
     return a.exec();

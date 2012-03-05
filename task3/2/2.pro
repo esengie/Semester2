@@ -11,10 +11,12 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        calculator.cpp \
-    calc.cpp
+    stackCalculator.cpp \
+    calculatorWidget.cpp
 
-HEADERS  += calculator.h \
-    calc.h
+HEADERS  += \
+    stackCalculator.h \
+    calculatorWidget.h
 
-FORMS    += calculator.ui
+FORMS    += \
+    calculatorWidget.ui
