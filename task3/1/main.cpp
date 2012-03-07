@@ -11,6 +11,6 @@ int main()
     for (int i = 0; i < 5; i++)
         std::cout << a[i] << " ";
 
-
+    delete sorter;
     return 0;
 }

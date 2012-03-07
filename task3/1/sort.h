@@ -15,6 +15,7 @@ public:
     \return pointer to sorted (initial) array
 */
     virtual int* sort(int* array, int length) = 0;
+    virtual ~Sort() {}
 protected:
 /** just an integer swap procedure.
 
