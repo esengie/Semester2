@@ -9,6 +9,7 @@ QT       += core gui
 TARGET = 3
 TEMPLATE = app
 
+CONFIG += static
 
 SOURCES += main.cpp\
         calculatorWidget.cpp \

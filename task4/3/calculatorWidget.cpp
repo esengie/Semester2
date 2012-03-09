@@ -40,7 +40,7 @@ CalculatorWidget::~CalculatorWidget()
 
 void CalculatorWidget::left(int value)
 {
-    if (m_oper == ' ')
+    if (m_oper == ' ' )
     {
         m_left = m_left * 10 + value;
         QString text = QString::number(m_left);
@@ -69,22 +69,23 @@ void CalculatorWidget::oper(QString sym)
         emit (result("0"));
         return;
     }
-    if (op == '=')
+
+    if (m_right || m_oper != '/')
     {
-        if (m_right || m_oper != '/')
-            {
-                m_left = StackCalculator::operate(m_left, m_oper, m_right);
-                QString text = QString::number(m_left);
-                emit result(text);
-            }
-        else
-        {
-            m_left = 0;
-            emit result("0");
-        }
-        m_oper = ' ';
-        m_right = 0;
+        m_left = StackCalculator::operate(m_left, m_oper, m_right);
+        QString text = QString::number(m_left);
+        emit result(text);
     }
+    else
+    {
+        m_left = 0;
+        emit result("0");
+    }
+
+    m_right = 0;
+
+    if (op == '=')
+        m_oper = ' ';
     else
         m_oper = op;
 }
