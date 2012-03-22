@@ -1,11 +1,7 @@
-#include <iostream>
-#include "pointerList.h"
-#include "arrayList.h"
+#include "listTest.h"
 
 int main()
 {
-    List * ab = new ArrayList();
-    ab->isIn(7);
-    ab->length();
-    return 0;
+    ListTest test;
+    QTest::qExec(&test);
 }

@@ -1,8 +1,6 @@
-#ifndef HASHCHANGEABLETEST_H
-#define HASHCHANGEABLETEST_H
-
-#include <QObject>
-#include <QTest>
+#pragma once
+#include <QtCore/QObject>
+#include <QtTest/QTest>
 #include "hashChangeable.h"
 #include "someHashFunction.h"
 
@@ -10,7 +8,7 @@ class HashChangeableTest : public QObject
 {
     Q_OBJECT
 public:
-    explicit HashChangeableTest(QObject *parent = 0);
+    explicit HashChangeableTest(QObject *parent = 0): QObject(parent) {}
 private slots:
     void init()
     {
@@ -62,5 +60,3 @@ private:
     HashChangeable* mHash;
     HashFunction* mHasher;
 };
-
-#endif // HASHCHANGEABLETEST_H

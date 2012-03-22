@@ -12,7 +12,7 @@ int main()
         array[i] = new int[SIZE];
     }
 
-    //freopen("d", "rw", stdin);
+
     int n = 0;
     int m = 0;
 
