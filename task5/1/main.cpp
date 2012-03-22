@@ -1,8 +1,6 @@
-#include <QtCore/QCoreApplication>
-
-int main(int argc, char *argv[])
+#include "stringListTest.h"
+int main()
 {
-    QCoreApplication a(argc, argv);
-
-    return a.exec();
+    StringListTest test;
+    QTest::qExec(&test);
 }

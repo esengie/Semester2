@@ -7,10 +7,10 @@
 class HashFunction
 {
 public:
+    virtual ~HashFunction() {}
     HashFunction (const int LENGTH = 2500): ARRAYLENGTH(LENGTH) {}
     /// Hash function takes a std::string
     virtual int hash(std::string) = 0;
-protected:
     const int ARRAYLENGTH;
 };
 

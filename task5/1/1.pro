@@ -4,7 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core
+QT       +=        \
+             testlib\
+               core
 
 QT       -= gui
 
@@ -15,14 +17,17 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 
-SOURCES += main.cpp \
+SOURCES += \
     hashChangeable.cpp \
     someHashFunction.cpp \
-    stringList.cpp
+    stringList.cpp \
+    main.cpp
 
 HEADERS += \
     hash.h \
     hashChangeable.h \
     hashFunction.h \
     someHashFunction.h \
-    stringList.h
+    stringList.h \
+    stringListTest.h \
+    hashChangeableTest.h

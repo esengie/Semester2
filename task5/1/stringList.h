@@ -2,7 +2,7 @@
 #include "string.h"
 #include "iostream"
 using namespace std;
-/// String List with a guardian
+/// String List without a guardian
 
 class StringList
 {
@@ -19,10 +19,8 @@ public:
 
         deletes it from the list, returns NULL if it is empty
       */
-    string getEl();
-    /** Finds the string in the list
-
-        \return a pointer to Stringlist, pointing to a searched string (or NUL)
+    string getVal();
+    /** Returns value of element
       */
     StringList* find (string h);
     /** Deletes a string from the list
@@ -34,8 +32,8 @@ public:
     int inclusions();
     /// Prints the List (redundant)
     void print();
+    StringList* next;    ///< too lazy to write an iterator, sorry
 private:    
-    StringList* next;
     StringList* current; ///< Almost useless element, should have created a Guardian class to hold it, now it's as if every element is a list
     int counter;
     string value;

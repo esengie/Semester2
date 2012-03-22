@@ -3,9 +3,11 @@
 
 #include "hash.h"
 
+class HashChangeableTest;
 
 class HashChangeable : public Hash
 {
+friend class HashChangeableTest;
 public:
     HashChangeable(HashFunction* temp, const int LENGTH = 2500);
     ~HashChangeable();
@@ -14,10 +16,10 @@ public:
     int elementsQuantity();
     void deleteValue(std::string);
     /**
-      \warning hash function must not have wider range than ARRAYLENGTH
+      \warning hash function must not have wider range than arraylength
       */                                                               // because i didn't want to create exceptions and yada yada
     virtual void changeFunction(HashFunction*);
-private:
+protected:
     const int ARRAYLENGTH;
     StringList** hashe;
     int quantity;

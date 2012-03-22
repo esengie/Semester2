@@ -7,21 +7,14 @@ StringList::~StringList ()
 }
 int StringList::inclusions()
 {
-    return counter;
+    if (this)
+        return counter;
+    return 0;
 }
 
-string StringList::getEl()
+string StringList::getVal()
 {
-    if (!next)
-        return NULL;
-    StringList* tmp = next;
-    string tmpx = next->value;
-    next = next->next;
-    tmp->next = NULL;
-    delete tmp;
-    if (!next)
-        current = NULL;
-    return tmpx;
+    return value;
 }
 
 StringList* StringList::find(string val)
