@@ -1,7 +1,10 @@
-#include "listTest.h"
+#include "arrayListTest.h"
+#include "pointerListTest.h"
 
 int main()
 {
-    ListTest test;
+    ArrayListTest test;
+    PointerListTest test2;
+    QTest::qExec(&test);
     QTest::qExec(&test);
 }

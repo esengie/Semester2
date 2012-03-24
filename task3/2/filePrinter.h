@@ -2,6 +2,7 @@
 #define FILETYPER_H
 #include "printer.h"
 
+
 class FilePrinter : public Printer
 {
 public:

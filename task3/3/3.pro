@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core
+QT       += core\
+            testlib
 
 QT       -= gui
 
@@ -21,4 +22,5 @@ SOURCES += main.cpp \
 
 HEADERS += \
     quickSort.h \
-    sort.h
+    sort.h \
+    firstElemSortTest.h

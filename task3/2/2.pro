@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core
+QT       += core\
+            testlib
 
 QT       -= gui
 
@@ -25,4 +26,5 @@ HEADERS += \
     printer.h \
     filePrinter.h \
     consolePrinter.h \
-    reader.h
+    reader.h \
+    spiralTest.h
