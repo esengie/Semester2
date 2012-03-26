@@ -12,13 +12,21 @@ public:
     ListSet* lookup(T);
     void add(T);
     void deleteVal(T);
+    void intersect(Set<T>*);
+    void unite(Set<T>*);
 private:
+    static bool isEqual(const T&, const T&);
     T val;
     ListSet* next;
     ListSet* current;
     ListSet* lookuper(T);
 
 };
+
+template <>
+inline ListSet<std::string>::ListSet(): val(""), next(NULL), current(NULL)
+{}
+
 
 template <class Tclass>
 ListSet<Tclass>::~ListSet()
@@ -37,18 +45,69 @@ template <class Tclass>
 ListSet<Tclass>* ListSet<Tclass>::lookuper(Tclass value)
 {
     ListSet* tmp = this;
-    while (tmp->next && tmp->next->val != value)
+    while (tmp->next && !isEqual(tmp->next->val, value))
         tmp = tmp->next;
     return tmp;
 }
-template <>
-ListSet<std::string>* ListSet<std::string>::lookuper(std::string value)
+
+template <class Tclass>
+bool ListSet<Tclass>::isEqual(const Tclass& value, const Tclass& value2)
 {
-    ListSet* tmp = this;
-    while (tmp->next && !tmp->next->val.compare(value))
-        tmp = tmp->next;
-    return tmp;
+    return value == value2;
 }
+
+template <>
+bool ListSet<std::string>::isEqual(const std::string& value, const std::string& value2)
+{
+    return !value.compare(value2);
+}
+
+template <class Tclass>
+void ListSet<Tclass>::intersect(Set<Tclass>* inters)
+{
+    ListSet<Tclass>* tmp = this->next;
+    while (tmp)
+    {
+        ListSet<Tclass>* temp = 0;
+        if (!inters->lookup(tmp->val))
+        {
+            temp = tmp;
+            tmp = tmp->next;
+            this->deleteVal(temp->val);
+        }
+        else
+        {
+            tmp=tmp->next;
+        }
+
+    }
+}
+
+
+template <class Tclass>
+void ListSet<Tclass>::unite(Set<Tclass>* inters)
+{
+
+    ListSet<Tclass>* tmp = this->next;
+
+    while (tmp)
+    {
+        Set<Tclass>* temp = inters->lookup(tmp->val);
+        if (!temp)
+        {
+            inters->add(tmp->val);
+        }
+        tmp = tmp->next;
+    }
+}
+
+
+
+
+
+
+
+
 
 template <class Tclass>
 void ListSet<Tclass>::add(Tclass value)

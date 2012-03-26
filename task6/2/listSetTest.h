@@ -52,6 +52,9 @@ private slots:
     }
 
 private:
-    Set<int>* mSet;
-    Set<std::string>* nSet;
+    ListSet<int>* mSet;
+    ListSet<std::string>* nSet;
 };
+
+
+//QTESTMAIN(ListSetTest);
