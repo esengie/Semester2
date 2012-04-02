@@ -56,7 +56,7 @@ bool ListSet<Tclass>::isEqual(const Tclass& value, const Tclass& value2)
     return value == value2;
 }
 
-template <>
+template <> inline
 bool ListSet<std::string>::isEqual(const std::string& value, const std::string& value2)
 {
     return !value.compare(value2);
