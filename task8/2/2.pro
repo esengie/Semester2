@@ -19,5 +19,5 @@ TEMPLATE = app
 SOURCES += main.cpp
 
 HEADERS += \
-    listSetTest.h \
-    vector.h
+    vector.h \
+    vectorTest.h
