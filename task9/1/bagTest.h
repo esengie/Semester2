@@ -33,9 +33,23 @@ private slots:
         mSet.insert(34);
         QVERIFY(*mSet.begin() == 34);
     }
+    void testIteratorCopyInit()
+    {
+        mSet.insert(34);
+        Bag<int>::iterator in = mSet.begin();
+        QVERIFY(*in == 34);
+    }
     void testIteratorPlusPlus()
     {
-
+        mSet.insert(34);
+        mSet.insert(7869);
+        mSet.insert(3);
+        Bag<int>::iterator in = mSet.begin();
+        QVERIFY(*in == 34);
+        in++;
+        QVERIFY(*in == 7869);
+        ++in;
+        QVERIFY(*in == 3);
     }
 
     void testEraseNumeric()

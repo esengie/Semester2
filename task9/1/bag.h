@@ -14,8 +14,10 @@ class Bag
 {
     class iterator
     {
+        typedef typename std::multiset<T>::iterator Gt;
     public:
-        iterator() : mIt(mMultiSet.begin()) {}
+        iterator() {}
+        //~iterator() : std::multiset<T>::iterator.
         iterator(const iterator& it) : mIt(it.mIt) {}
         iterator(const typename std::multiset<T>::iterator& it) : mIt(it) {}
         iterator& operator=(const iterator& it) { mIt = it.mIt; return mIt; }
@@ -23,7 +25,7 @@ class Bag
         iterator& operator++();
         const iterator operator++(int);
     private:
-        typename std::multiset<T>::iterator mIt;
+         Gt mIt;
     };
 private:
     std::multiset<T> mMultiSet;
@@ -40,20 +42,22 @@ public:
     bool find(const T&) const;
     int quantity(const T&) const;
     void clear();
-    iterator begin() { return iterator(mMultiset.begin()); }
-    iterator end() { return iterator(mMultiset.end()); }
+    iterator begin() { return iterator(mMultiSet.begin()); }
+    iterator end() { return iterator(mMultiSet.end()); }
 
 };
 
 template<class T>
-typename Bag<T>::iterator& operator++()
+typename Bag<T>::iterator& Bag<T>::iterator::operator++()
 {
-    return ++mIt;
+    ++mIt;
+    return *this;
 }
 template<class T>
-const typename Bag<T>::iterator operator++(int)
+const typename Bag<T>::iterator Bag<T>::iterator::operator++(int)
 {
-    return mIt++;
+    iterator temp = mIt++;
+    return temp;
 }
 
 template<class T> inline
