@@ -14,4 +14,3 @@ SOURCES += main.cpp\
         ticTacToe.cpp
 
 HEADERS  += ticTacToe.h
-
