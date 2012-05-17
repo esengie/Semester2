@@ -5,38 +5,30 @@ void TicTacToe::work()
 {
     if (objectName().isEmpty())
         setObjectName(QString::fromUtf8("MagnificientNothing"));
-
-    resize(180, 180);
+    int total = SIZE * SIZE;
+    resize(SIZE * 52 + 2, SIZE * 52 + 2);
 
     typer = true;
 
     gridWidget = new QWidget(this);
-    //gridWidget->setObjectName(QString::fromUtf8("gridWidget"));
-    gridWidget->setGeometry(QRect(0, 0, 180, 180));
+    gridWidget->setGeometry(QRect(0, 0, SIZE * 52 + 2, SIZE * 52 + 2));
     gridLayout = new QGridLayout(gridWidget);
-    gridLayout->setSpacing(1);
-    gridLayout->setContentsMargins(11, 11, 11, 11);
+    gridLayout->setSpacing(2);
+    gridLayout->setContentsMargins(0,0,0,0);
     gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
 
-    QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
-    sizePolicy.setHorizontalStretch(0);
-    sizePolicy.setVerticalStretch(0);
-
-    for (int i = 0; i < SIZE; i++)
+    for (int i = 0; i < total; i++)
     {
         control[i] = 0;
         pushButton[i] = new QPushButton(gridWidget);
         pushButton[i]->setObjectName(QString("%1").arg(i));
-        sizePolicy.setHeightForWidth(pushButton[i]->sizePolicy().hasHeightForWidth());
-        pushButton[i]->setSizePolicy(sizePolicy);
         pushButton[i]->setIcon(Cheng);
-        pushButton[i]->setIconSize(QSize(50,50));
-        //pushButton[i]->
+        pushButton[i]->setIconSize(icon_s);
 
         connect(pushButton[i], SIGNAL(clicked()), &mapper, SLOT(map()));
         connect(this, SIGNAL(check()), this, SLOT(on_check));
         mapper.setMapping(pushButton[i], i);
-        gridLayout->addWidget(pushButton[i], i / 3, i % 3, 1, 1);
+        gridLayout->addWidget(pushButton[i], i / SIZE, i % SIZE, 1, 1);
     }
     connect(&mapper, SIGNAL(mapped(int)), this, SLOT(procede(int)));
     connect(this, SIGNAL(check()), this, SLOT(on_check()));
@@ -63,52 +55,58 @@ void TicTacToe::procede(int i)
             typer = true;
             control[i] = -1;
         }
-        pushButton[i]->setIconSize(QSize(50,50));
         emit(check());
     }
 }
 
 void TicTacToe::on_check()
 {
-    int counter = 0;
+    int whole_checks = SIZE * 2 + 2;
+    int checky[whole_checks];
+    for (int i = 0; i < whole_checks; i++)
+    {
+        checky[i] = 0;
+    }
+    for (int j = 0; j < SIZE; j++)
+        for (int i = j; i < SIZE*SIZE; i+=SIZE)
+        {
+            checky[j] += control[i];
+        }
+    for (int i = 0; i < SIZE * SIZE; i++)
+    {
+        checky[SIZE + i / SIZE] += control[i];
+    }
+    int main_d = whole_checks - 2;
+    int antid = whole_checks - 1;
+    int j = 0;
     for (int i = 0; i < SIZE; i++)
+    {
+        checky[main_d] += control[i * SIZE + j];
+        checky[antid] += control[i * SIZE + (SIZE - 1) - j];
+        j++;
+    }
+    for(int i = 0; i < whole_checks; i++)
+    {
+        if (checky[i] > SIZE - 1)
+        {
+            emit(win(1));
+            exit;
+        }
+        if (checky[i] < -SIZE + 1)
+        {
+            emit(win (-1));
+            exit;
+        }
+    }
+    int counter = 0;
+    for (int i = 0; i < SIZE * SIZE; i++)
     {
         if (control[i])
             counter++;
     }
-    if (counter == 9)
+    if (counter == SIZE * SIZE)
     {
         emit (win(0));
-        exit;
-    }
-    int checky[8];
-    for (int i = 0; i < 8; i++)
-    {
-        checky[i] = 0;
-    }
-    for (int j = 0; j < 3; j++)
-        for (int i = j; i < SIZE; i+=3)
-        {
-            checky[j] += control[i];
-        }
-    for (int i = 0; i < SIZE; i++)
-    {
-        checky[3 + i / 3] += control[i];
-    }
-    checky[6] = control[0] + control[4] + control[8];
-    checky[7] = control[2] + control[4] + control[6];
-    for(int i = 0; i < 8; i++)
-    {
-        if (checky[i] > 2)
-        {
-            emit(win(1));
-            break;
-        }
-        if (checky[i] < -2)
-        {
-            emit(win (-1));
-            break;
-        }
     }
 }
 
@@ -121,7 +119,7 @@ void TicTacToe::on_win(int k)
     if (k)
     {
         if (k > 0)
-        message.setText("Cross guy won");
+            message.setText("Cross guy won");
         else
             message.setText("Circle guy won");
     }
@@ -140,11 +138,19 @@ void TicTacToe::on_win(int k)
 
 void TicTacToe::on_reboot()
 {
-    for (int i = 0; i < SIZE; i++)
+    for (int i = 0; i < SIZE*SIZE; i++)
     {
         control[i] = 0;
         pushButton[i]->setIcon(Cheng);
-        pushButton[i]->setIconSize(QSize(50,50));
     }
     //typer = true;
+}
+TicTacToe::~TicTacToe()
+{
+    delete gridWidget;
+    delete gridLayout;
+    for (int i = 0; i < SIZE*SIZE; i++)
+    {
+       delete pushButton[i];
+    }
 }
